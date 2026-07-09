@@ -1,0 +1,18 @@
+<%- include('partials/header') %>
+
+<h1><%= post ? 'Edit Post' : 'New Post' %></h1>
+<form action="<%= post ? '/dashboard/edit/' + post._id : '/dashboard/new' %>" method="POST" class="form">
+  <label>Title
+    <input type="text" name="title" value="<%= post ? post.title : '' %>" required />
+  </label>
+  <label>Content
+    <textarea name="content" rows="10" required><%= post ? post.content : '' %></textarea>
+  </label>
+  <label class="checkbox">
+    <input type="checkbox" name="published" <%= (!post || post.published) ? 'checked' : '' %> />
+    Published (visible to everyone)
+  </label>
+  <button type="submit"><%= post ? 'Save Changes' : 'Create Post' %></button>
+</form>
+
+<%- include('partials/footer') %>

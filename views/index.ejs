@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+
+<section class="hero">
+  <h1 class="hero-title">Thoughts, Stories &amp; Ideas</h1>
+  <p class="hero-subtitle">A blog built with Node.js, Express &amp; MongoDB — showcasing real-world authentication and role-based access control.</p>
+</section>
+
+<h2 class="section-label">Latest Posts</h2>
+
+<% if (posts.length === 0) { %>
+  <p>No posts yet. Check back soon!</p>
+<% } %>
+
+<div class="post-grid">
+  <% posts.forEach(post => { %>
+    <article class="post-card">
+      <h2><a href="/post/<%= post.slug %>"><%= post.title %></a></h2>
+      <p class="meta">By <%= post.author.name %> &middot; <%= post.createdAt.toDateString() %></p>
+      <p><%= post.content.slice(0, 140) %>...</p>
+      <a class="read-more" href="/post/<%= post.slug %>">Read more &rarr;</a>
+    </article>
+  <% }) %>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,11 @@
+<%- include('partials/header') %>
+
+<article class="post-full">
+  <h1><%= post.title %></h1>
+  <p class="meta">By <%= post.author.name %> &middot; <%= post.createdAt.toDateString() %></p>
+  <div class="content"><%= post.content %></div>
+</article>
+
+<a href="/">&larr; Back to all posts</a>
+
+<%- include('partials/footer') %>
